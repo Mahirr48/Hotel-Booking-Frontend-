@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
+import { getAssetUrl } from "../services/config";
 import { MdDateRange, MdLocationOn, MdLuggage, MdArrowForward } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -108,11 +109,7 @@ const MyBookings = () => {
                   <div className="w-full md:w-64 h-48 md:h-auto relative overflow-hidden bg-slate-100 flex-shrink-0 dark:bg-slate-800">
                     {b.hotelId?.image ? (
                       <img
-src={
-  hotel.image?.startsWith("http")
-    ? hotel.image
-    : `${import.meta.env.VITE_API_URL}${hotel.image}`
-}
+                        src={getAssetUrl(b.hotelId.image)}
                         alt={b.hotelId?.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />

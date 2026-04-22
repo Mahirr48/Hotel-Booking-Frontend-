@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { getAssetUrl } from "../services/config";
 import { 
   MdLocationOn, 
   MdStar, 
@@ -60,11 +61,8 @@ const HotelDetails = () => {
       {/* 🔥 LUXURY HERO SECTION */}
       <div className="relative h-[60vh] sm:h-[75vh] w-full overflow-hidden">
         <img
-src={
-  hotel.image?.startsWith("http")
-    ? hotel.image
-    : `${import.meta.env.VITE_API_URL}${hotel.image}`
-}          className="w-full h-full object-cover scale-[1.02] hover:scale-105 transition-transform duration-[1.5s] ease-out"
+          src={getAssetUrl(hotel.image)}
+          className="w-full h-full object-cover scale-[1.02] hover:scale-105 transition-transform duration-[1.5s] ease-out"
           alt={hotel.name}
         />
         

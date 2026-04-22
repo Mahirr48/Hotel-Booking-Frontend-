@@ -18,7 +18,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/reservations`, {
+//       const res = await fetch(`${API_BASE_URL}/reservations`, {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify(form),

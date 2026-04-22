@@ -1,18 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { MdLocationOn, MdStar, MdArrowForward } from "react-icons/md";
+import { getAssetUrl } from "../../services/config";
 
 const HotelCard = ({ hotel }) => {
   const navigate = useNavigate();
-  const BASE_URL = import.meta.env.VITE_API_URL;
-
-  const getImageUrl = (image) => {
-    if (!image) return "/fallback.jpg";
-
-    if (image.startsWith("http")) return image;
-
-    return `${BASE_URL}${image}`;
-  };
-
 
   return (
     <div 
@@ -22,7 +13,7 @@ const HotelCard = ({ hotel }) => {
       {/* Image Container with Zoom Effect */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
        <img
-  src={getImageUrl(hotel.image)}
+  src={getAssetUrl(hotel.image)}
   alt={hotel.name}
   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
 />
