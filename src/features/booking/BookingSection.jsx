@@ -87,6 +87,13 @@ const BookingSection = () => {
   const basePrice = hotel.price * nights;
   const taxes = Math.round(basePrice * 0.18); // 18% tax example
   const total = basePrice + taxes;
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const getImageUrl = (image) => {
+    if (!image) return "/fallback.jpg";
+    if (image.startsWith("http")) return image;
+    return `${API_URL}${image}`;
+  };
 
   // Get today's date in YYYY-MM-DD for min date constraints
   const today = new Date().toISOString().split('T')[0];
@@ -186,7 +193,7 @@ const BookingSection = () => {
               {/* Property Snapshot */}
               <div className="flex gap-4 mb-8 pb-8 border-b border-white/10">
                 <img 
-                  src={`http://localhost:5000${hotel.image}`} 
+                  src={getImageUrl(hotel.image)}
                   alt={hotel.name}
                   className="w-24 h-24 object-cover rounded-2xl shadow-lg border border-white/10"
                 />

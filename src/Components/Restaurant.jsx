@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../services/api";
 
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/restaurants")
+    API.get("/restaurants")
       .then(res => setRestaurants(res.data))
       .catch(err => console.error(err));
   }, []);

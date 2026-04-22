@@ -41,6 +41,7 @@ const images = [
   "/hotelimg3.webp",
   "/hotelimg4.webp",
 ];
+const SLIDESHOW_INTERVAL_MS = 5 * 1000;
 const [index, setIndex] = useState(0);
 
 const item = {
@@ -60,7 +61,7 @@ const item = {
 useEffect(() => {
   const interval = setInterval(() => {
     setIndex((prev) => (prev + 1) % images.length);
-  }, 5000);
+  }, SLIDESHOW_INTERVAL_MS);
 
   return () => clearInterval(interval);
 }, []);
